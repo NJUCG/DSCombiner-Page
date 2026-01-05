@@ -44,6 +44,15 @@ a:hover::after {
     transform: translateX(-50%);
 }
 
+/* PDF Link */
+a.pdf-link {
+    color: #0066cc;
+}
+
+a.pdf-link:hover {
+    color: #0052a3;
+}
+
 /* blockquote */
 blockquote {
     --blockquote-color: #666;
