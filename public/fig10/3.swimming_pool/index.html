@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Detailed Result</title>
+
+        <link rel="stylesheet" href="../../../public/css/main.css" />
+        <script src="../../../public/js/ImageBox.js"></script>
+        <script src="../../../public/js/TableBox.js"></script>
+        <script src="data.js"></script>
+        <script src="../../../public/js/setup.js" defer></script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="content">
+                <div class="pre-content">
+                    <p><a href="../../../index.html" style="color:orangered">← Home</a></p>
+                    <h2>Default Name</h2>
+                    <p class="help-text">HelpText</p>
+                </div>
+            </div> <!-- content -->
+        </div> <!-- main -->
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                try {
+                    let main = document.querySelector('.content');
+                    new ImageBox(main, data['images'], (data['imageTableFontSizeOverride'] || null));
+                    new TableBox(main, 'Statistics', data['stats']);
+
+                    let title = document.querySelector('.pre-content > h2');
+                    title.innerHTML = data['title'] || "Default Name";
+
+                    let helpText = document.querySelector('.pre-content > .help-text');
+                    helpText.innerHTML =
+                        "Move mouse over the image to see the details.<br>Press number keys (e.g., 1, 2, ...) to switch between images. Use mouse wheel to zoom in/out. Click and drag to translate.";
+                } catch (error) {
+                    console.error("Error during setup:", error);
+                }
+            });
+        </script>
+    </body>
+</html>

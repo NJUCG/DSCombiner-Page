@@ -1,0 +1,396 @@
+/* Variables */
+
+:root {
+    --black: rgb(31, 35, 40);
+    --light-black: rgb(99, 108, 118);
+    --grey: rgb(208, 215, 222);
+    --light-white: rgb(246, 248, 250);
+    --link-color: var(--black);
+    --blockquote-color: #666;
+
+    --font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+
+    --border-radius: 0px;
+}
+
+/* Global Settings */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* a */
+a {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    font-style: italic;
+}
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--link-color);
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: -3px;
+
+    transition: all 0.2s ease-in-out 0s;
+}
+a:hover::after {
+    width: 100%;
+    transform: translateX(-50%);
+}
+
+/* blockquote */
+blockquote {
+    --blockquote-color: #666;
+    border-left: 4px solid #ddd;
+    color: var(--blockquote-color);
+}
+blockquote > p {
+    margin-left: 15px;
+}
+
+/* Code */
+code {
+    background-color: #eee;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-family: var(--font-family);
+    font-size: 100%;
+}
+
+/* ul */
+ul {
+    padding-left: 30px;
+}
+
+/* Body */
+
+html, body, .camera {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+}
+body {
+    /* background-image: url('../pics/background-cut.png'); */
+    background-color: #666;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/* ----- Main ----- */
+
+.main {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+
+.main > * {
+    padding: 30px;
+}
+
+/* ----- Main - Content ----- */
+
+.content {
+    position: relative;
+    width: 100%;
+    background-color: white;
+
+    border: 3px solid var(--grey);
+    border-radius: var(--border-radius);
+}
+
+.content > .introduction {
+    position: relative;
+
+    /* I found that `introduction` is useless. `Article` is a better way to introduce. */
+    display: none;
+
+    margin: 10px 10px;
+    padding: 10px 20px;
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+
+    min-height: 100px;
+}
+
+.content > .pre-content {
+    margin: 20px 20px 0 20px;
+}
+.content > .pre-content > * {
+    margin: 15px 15px 0 15px;
+}
+.content > .pre-content > .authors {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.content > .articles {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+}
+.content > .articles > .article {
+    position: relative;
+    padding: 10px 30px 10px 30px;
+
+    margin: 10px 10px;
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+
+    display: block;
+}
+.content > .articles > .overview {
+    margin: 0 40px;
+
+    border: 0px;
+    border-radius: var(--border-radius);
+}
+
+.article > * {
+    margin: 15px 0;
+    line-height: 1.7;
+}
+.article > h2,
+.article > h3,
+.article > h4,
+.article > h5 {
+    text-align: center;
+}
+
+/* Thumb */
+
+.thumbs {
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: flex-start; /* 取消居中，改为左对齐 */
+    gap: 20px; /* 项目间距 */
+    max-width: 840px; /* (400px + 20px) * 2 */
+    margin: 0 auto; /* 容器居中 */
+}
+
+.thumb {
+    width: 400px; /* 固定宽度 */
+    flex: 0 0 auto; /* 禁止伸缩：flex-grow, flex-shrink, flex-basis */
+    margin: 0; /* 清除原有margin */
+}
+
+
+.thumb-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    margin: 0 auto;
+    padding: 0;
+    background-color: var(--grey);
+    border-radius: var(--border-radius);
+}
+
+.thumb-text {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    margin: -5px 0 0 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Detailed Result */
+
+/* MARK: ImageBox */
+
+.image-box > div ~ div {
+    margin: 0 30px 20px 30px;
+    padding: 20px;
+    border: 3px solid var(--grey);
+    border-radius: var(--border-radius);
+}
+
+/* .selector-group 指的是上面那一排序号 */
+.image-box .selector-group {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.image-box .selector-group > .selector, .image-box table > tr > td > div {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    border: 1px solid var(--grey);
+
+    padding: 10px 0px;
+
+    margin: 0 0px 10px 0px;
+}
+.image-box table > tr > td > div {
+    margin: 0px 0;
+}
+.image-box table > tr > td > img {
+    margin: 10px 0;
+}
+.image-box .selector-group > .active {
+    background-color: var(--grey);
+}
+
+.image-box img {
+    background-color: var(--grey);
+    border-radius: var(--border-radius);
+}
+
+/* MARK: TableBox */
+
+.table-box {
+    margin: -23px 30px 20px 30px;
+    padding: 20px;
+    border: 3px solid var(--grey);
+    border-radius: var(--border-radius);
+}
+
+.table-box > .title {
+    padding: 0 0 20px 0;
+}
+
+.table-box > table {
+    width: 100%;
+    height: 100%;
+
+    border-collapse: collapse;
+}
+
+.table-box > table > * {
+    font-size: 18px;
+}
+
+.table-box > table th, .table-box > table td {
+    border: 1px solid var(--grey);
+    padding: 10px;
+}
+
+/* Media */
+
+body {
+    min-width: 303px;
+}
+
+@media (min-width: 570px) and (max-width: 768px) {
+    .trigger { display: none; }
+    /* .memes { display: none; } */
+    .main { flex-direction: column; }
+
+    .body, .camera, .header, .main, .footer {
+        width: 100%;
+    }
+
+    /* sidebar */
+    .sidebar {
+        position: relative;
+        height: auto;
+        width: auto;
+
+        display: flex;
+    }
+    .sidebar > .aboutme > .avatar {
+        width: 190px;
+        height: 190px;
+    }
+    .sidebar hr {
+        margin: 0 20px;
+    }
+    
+    /* content */
+    .content {
+        height: auto;
+        width: auto;
+    }
+    .articles > .assignment > img {
+        top: 200px;
+    }
+    .articles > .assignment > table {
+        top: 380px;
+    }
+}
+
+@media (max-width: 570px) {
+    .trigger { display: none; }
+    /* .memes { display: none; } */
+    .main { flex-direction: column; }
+
+    .body, .camera, .header, .main, .footer {
+        width: 100%;
+    }
+
+    .sidebar {
+        position: relative;
+        height: auto;
+        width: auto;
+
+        display: flex;
+        flex-direction: column;
+    }
+    .sidebar > .aboutme {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar > .aboutme > .avatar {
+        width: 190px;
+        height: 190px;
+    }
+    
+    /* content */
+    .content {
+        height: auto;
+        width: auto;
+    }
+    .articles > .assignment > img {
+        top: 200px;
+    }
+    .articles > .assignment > table {
+        top: 380px;
+    }
+
+    /* assignment */
+    .articles > .assignment > img {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+    .articles > .assignment > table {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+}
